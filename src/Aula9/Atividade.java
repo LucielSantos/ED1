@@ -155,5 +155,6 @@ public class Atividade {
             }
         }while (!resposta.equals("q"));
         System.out.println("Você Saiu do Programa!");
+        System.out.println("");
     }
 }
