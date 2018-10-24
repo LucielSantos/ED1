@@ -60,6 +60,54 @@ public class ListaDuplamenteEncadeada {
         }
     }
 
+    public boolean delInicio(){
+        if (this.fim==null){
+            return false;
+        }
+        if (this.inicio.proximo==null){
+            this.inicio=null;
+            this.fim=null;
+            qtd--;
+            return true;
+        }else {
+            Elemento aux = inicio.proximo;
+            this.inicio = aux;
+            aux.anterior = null;
+            qtd--;
+            return true;
+        }
+    }
+
+    public boolean delFim(){
+        if (this.inicio==null || this.qtd==1){
+            return delInicio();
+        }else {
+            Elemento aux=this.fim;
+            aux.anterior.proximo=null;
+            fim=aux.anterior;
+//            this.fim.proximo=null;
+//            this.fim=this.fim.anterior;
+            qtd--;
+            return true;
+        }
+    }
+
+    public boolean dePos(int p){
+        if (this.inicio==null || this.qtd==1 || p<=0){
+            return delInicio();
+        }else if (p>=qtd) {
+            return delFim();
+        }else {
+            Elemento aux= this.inicio;
+            for (int i=0; i<p;i++){
+                aux=aux.proximo;
+            }
+            aux.anterior.proximo=aux.proximo;
+            qtd--;
+            return true;
+        }
+    }
+
     public void mostrar(){
         if (inicio==null){
             System.out.println("Lista Vazia!");

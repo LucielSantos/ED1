@@ -15,5 +15,11 @@ public class Test {
 
         lista.mostrar();
 
+        lista.dePos(10);
+
+        System.out.println("--");
+        lista.mostrar();
+
+
     }
 }
