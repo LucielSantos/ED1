@@ -92,10 +92,8 @@ public class ListaDuplamenteEncadeada {
         }
     }
 
-    public boolean dePos(int p){
-        if (this.inicio==null || this.qtd==1 || p<=0){
-            return delInicio();
-        }else if (p>=qtd) {
+    public boolean delPos(int p){
+        if (this.inicio==null || this.qtd==1 || p>=qtd){
             return delFim();
         }else {
             Elemento aux= this.inicio;
