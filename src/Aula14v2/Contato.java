@@ -76,11 +76,16 @@ public class Contato {
         System.out.print("Digite a Profissão: ");
         this.setProfissao(read.next());
 
-        this.email.ler("email");
-        listaEmail.addMeios(email);
+        int p=2;
+        for (int i =0; i<p; i++) {
+            this.email.ler("email");
+            listaEmail.addMeios(email);
+        }
 
-        this.telefone.ler("telefone");
-        listaTelefone.addMeios(telefone);
+        for (int i=0; i<p; i++) {
+            this.telefone.ler("telefone");
+            listaTelefone.addMeios(telefone);
+        }
 
 
     }
