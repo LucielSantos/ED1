@@ -20,10 +20,12 @@ public class Lista {
 
     public void mostrar(){
         Contato aux= this.inicio;
+        ListaMeios meios= new ListaMeios();
         for (int i = 0; i<qtd; i++){
             System.out.println(aux.toString());
             aux=aux.getProximo();
         }
+        meios.mostrar();
     }
 
     public int posicao(String nome){
@@ -79,7 +81,9 @@ public class Lista {
             for (int i = 0; i < p; i++) {
                 aux = aux.proximo;
             }
-            if (aux.getNome()==inicio.getNome()){
+            if (p<0){
+                return false;
+            }else if (aux.getNome()==inicio.getNome()){
                 inicio=inicio.getProximo();
                 qtd--;
             }else {

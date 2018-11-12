@@ -12,6 +12,10 @@ public class Contato {
     Contato proximo;
     Contato anterior;
 
+    Meios email= new Meios();
+    Meios telefone= new Meios();
+
+
     public String getNome() {
         return nome;
     }
@@ -62,11 +66,22 @@ public class Contato {
     }
 
     public void ler(){
+        ListaMeios listaEmail = new ListaMeios();
+        ListaMeios listaTelefone = new ListaMeios();
+
         System.out.print("Digite o Nome: ");
         this.setNome(read.next());
         System.out.print("Digite o Endereço: ");
         this.setEndereco(read.next());
         System.out.print("Digite a Profissão: ");
         this.setProfissao(read.next());
+
+        this.email.ler("email");
+        listaEmail.addMeios(email);
+
+        this.telefone.ler("telefone");
+        listaTelefone.addMeios(telefone);
+
+
     }
 }
