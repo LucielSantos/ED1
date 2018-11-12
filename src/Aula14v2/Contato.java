@@ -12,8 +12,8 @@ public class Contato {
     Contato proximo;
     Contato anterior;
 
-    Meios email= new Meios();
-    Meios telefone= new Meios();
+    ListaMeios email= new ListaMeios();
+    ListaMeios telefone= new ListaMeios();
 
 
     public String getNome() {
@@ -78,13 +78,15 @@ public class Contato {
 
         int p=2;
         for (int i =0; i<p; i++) {
-            this.email.ler("email");
-            listaEmail.addMeios(email);
+            Meios aux= new Meios();
+            aux.ler("email");
+            email.addMeios(aux);
         }
 
         for (int i=0; i<p; i++) {
-            this.telefone.ler("telefone");
-            listaTelefone.addMeios(telefone);
+            Meios aux= new Meios();
+            aux.ler("telefone");
+            telefone.addMeios(aux);
         }
 
 

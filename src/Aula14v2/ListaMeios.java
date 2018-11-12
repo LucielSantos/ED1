@@ -11,8 +11,7 @@ public class ListaMeios {
             this.fim=meios;
             qtd++;
         }else {
-            meios.setAnterior(this.fim);
-            this.fim.setProximo(meios);
+            meios.proximo=this.fim;
             this.fim=meios;
             qtd++;
         }

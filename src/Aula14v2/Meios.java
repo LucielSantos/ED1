@@ -44,6 +44,7 @@ public class Meios {
     }
 
     public void ler(String tipo){
+
         if (tipo.equals("email")){
             this.setTipo("email");
         }else {
