@@ -76,13 +76,16 @@ public class Contato {
         System.out.print("Digite a Profissão: ");
         this.setProfissao(read.next());
 
-        int p=2;
+        System.out.print("Digite quantos E-mails terá: ");
+        int p=read.nextInt();
         for (int i =0; i<p; i++) {
             Meios aux= new Meios();
             aux.ler("email");
             email.addMeios(aux);
         }
 
+        System.out.print("Digite quantos Telefones terá: ");
+        p=read.nextInt();
         for (int i=0; i<p; i++) {
             Meios aux= new Meios();
             aux.ler("telefone");

@@ -1,5 +1,6 @@
 package Aula14v2;
 
+
 import java.util.Scanner;
 
 public class Meios {
@@ -43,16 +44,26 @@ public class Meios {
         this.tipo = tipo;
     }
 
+    @Override
+    public String toString() {
+        return "Meios{" +
+                "dado='" + dado + '\'' +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
+
     public void ler(String tipo){
 
         if (tipo.equals("email")){
             this.setTipo("email");
+            System.out.print("Digite o email: ");
+            this.setDado(read.next());
         }else {
             this.setTipo("Telefone");
+            System.out.print("Digite o telefone: ");
+            this.setDado(read.next());
         }
-        System.out.print("Digite o dado: ");
-        this.setDado(read.next());
+
     }
-
-
 }
+
