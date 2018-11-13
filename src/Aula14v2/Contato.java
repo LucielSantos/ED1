@@ -66,9 +66,6 @@ public class Contato {
     }
 
     public void ler(){
-        ListaMeios listaEmail = new ListaMeios();
-        ListaMeios listaTelefone = new ListaMeios();
-
         System.out.print("Digite o Nome: ");
         this.setNome(read.next());
         System.out.print("Digite o Endereço: ");
