@@ -52,18 +52,14 @@ public class Meios {
                 '}';
     }
 
-    public void ler(String tipo){
-
-        if (tipo.equals("email")){
-            this.setTipo("email");
+    public void ler(String nome){
+        if (nome=="email"){
             System.out.print("Digite o email: ");
             this.setDado(read.next());
         }else {
-            this.setTipo("Telefone");
             System.out.print("Digite o telefone: ");
             this.setDado(read.next());
         }
-
     }
 }
 

@@ -16,21 +16,50 @@ public class Lista {
         System.out.println("Total de Remoções: "+this.remocoes);
     }
 
-    public void add(){
-        Contato contato= new Contato();
-        contato.ler();
-        if (this.inicio==null){
-            this.inicio=contato;
-            this.fim=contato;
-            qtd++;
-            adicoes++;
-        }else {
-            contato.setAnterior(this.fim);
-            this.fim.setProximo(contato);
-            this.fim=contato;
-            qtd++;
-            adicoes++;
+    public boolean addInicio (Contato c){
+        if (this.inicio == null){
+            this.inicio = c;
+            this.fim = c;
+            this.qtd ++;
+            this.adicoes++;
+            return true;
+        } else {
+            c.proximo = this.inicio;
+            inicio.anterior = c;
+            this.inicio = c;
+            this.qtd++;
+            return true;
         }
+
+    }
+    public boolean addFim(Contato c){
+        if (this.inicio == null){
+            return addInicio(c);
+        }else{
+            this.fim.proximo = c;
+            c.anterior = this.fim;
+            this.fim = c;
+            this.qtd++;
+            return true;
+        }
+    }
+
+    public boolean addPosicao(Contato c, int p){
+        if(this.inicio==null || p<=0){
+            return addInicio(c);
+        }
+        if(p>=this.qtd){
+            return addFim(c);
+        }
+        Contato aux = this.inicio;
+        for(int i=0;i<p;i++){
+            aux=aux.proximo;
+        }
+        c.anterior=aux.anterior;
+        aux.anterior.proximo=c;
+        c.proximo=aux;
+        this.qtd++;
+        return true;
     }
 
     public boolean editar(int n){
@@ -42,25 +71,28 @@ public class Lista {
                 aux = aux.proximo;
             }
             this.delPos(n);
-            this.add();
+            Contato novo= new Contato();
+            novo.ler();
+            this.addOrdem(novo);
             this.edicoes++;
             return true;
         }
     }
 
     public void mostrar(){
-        if (this.inicio==null){
-            System.out.println("Agenda Vazia");
-        }else {
             Contato aux = this.inicio;
-            for (int i = 0; i < qtd; i++) {
-                System.out.println(aux.toString());
-                aux.email.mostrar();
-                aux.telefone.mostrar();
-                aux = aux.getProximo();
-                System.out.println("----------------------------");
+            if (aux==null){
+                System.out.println("Lista Vazia");
+            }else {
+                for (int i = 0; i < this.qtd; i++) {
+                    System.out.println("Nome: " + aux.getNome());
+                    System.out.println("Endereço: " + aux.getEndereco());
+                    System.out.println("Profissao: " + aux.getProfissao());
+                    aux.email.listar();
+                    aux.telefones.listar();
+                    aux = aux.getProximo();
+                }
             }
-        }
 
     }
 
@@ -91,8 +123,8 @@ public class Lista {
                 aux = aux.proximo;
             }
             System.out.println(aux.toString());
-            aux.email.mostrar();
-            aux.telefone.mostrar();
+            aux.email.listar();
+            aux.telefones.listar();
         }
     }
 
@@ -154,6 +186,23 @@ public class Lista {
             return true;
         }
     }
+
+    public boolean addOrdem(Contato c){
+        int tamanho=0;
+        Contato aux=this.inicio;
+
+        if(this.inicio==null){
+            return addInicio(c);
+        }
+        while(c.getNome().compareTo(aux.getNome()) >= 0 && tamanho != this.qtd){
+            aux = aux.getProximo();
+            tamanho++;
+            if(tamanho == this.qtd)
+                return addFim(c);
+        }
+        return addPosicao(c, tamanho);
+    }
+
 }
 
 

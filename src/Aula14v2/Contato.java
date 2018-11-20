@@ -12,12 +12,21 @@ public class Contato {
     Contato proximo;
     Contato anterior;
 
-    ListaMeios email= new ListaMeios();
-    ListaMeios telefone= new ListaMeios();
+    public ListaMeios email;
+    public ListaMeios telefones;
+
+    public Contato(){
+        email=new ListaMeios();
+        telefones=new ListaMeios();
+    }
 
 
     public String getNome() {
         return nome;
+    }
+
+    public String getEndereco() {
+        return endereco;
     }
 
     public void setNome(String nome) {
@@ -65,7 +74,7 @@ public class Contato {
                 '}';
     }
 
-    public void ler(){
+    /*public void ler(){
         System.out.print("Digite o Nome: ");
         this.setNome(read.next());
         System.out.print("Digite o Endereço: ");
@@ -87,8 +96,35 @@ public class Contato {
             Meios aux= new Meios();
             aux.ler("telefone");
             telefone.addMeios(aux);
-        }
+        }*/
 
+    public boolean pergunta(){
+        System.out.print("deseja adicionar mais(s/n)?");
+        String resp= read.next();
+        if (resp.equals("s")){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public void ler(){
+        System.out.print("Digite o nome: ");
+        this.setNome(read.next());
+        System.out.print("Digite Endereço: ");
+         this.setEndereco(read.next());
+         System.out.print("Digite a Profissao: ");
+         this.setProfissao(read.next());
+        do {
+            Meios mail= new Meios();
+            mail.ler("email");
+            email.add(mail);
+        }while (this.pergunta());
+        do {
+            Meios fone= new Meios();
+            fone.ler("fone");
+            telefones.add(fone);
+        }while (this.pergunta());
 
     }
 }

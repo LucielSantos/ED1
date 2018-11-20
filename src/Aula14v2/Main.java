@@ -24,7 +24,9 @@ public class Main {
    switch (resp){
     case 1:
      System.out.println("ADICIONANDO CONTATO");
-     lista.add();
+     Contato novo= new Contato();
+     novo.ler();
+     lista.addOrdem(novo);
      System.out.println("Contato Adicionado");
      break;
 
